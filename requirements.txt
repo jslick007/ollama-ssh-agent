@@ -1,0 +1,2 @@
+paramiko>=3.0
+rich>=13.0

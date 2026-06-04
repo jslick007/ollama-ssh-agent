@@ -1,0 +1,14 @@
+[project]
+name = "ollama-monitor"
+version = "1.0.0"
+requires-python = ">=3.7"
+dependencies = [
+    "paramiko>=3.0",
+    "rich>=13.0",
+]
+
+[project.scripts]
+ollama-monitor = "ollama_monitor:main"
+
+[tool.setuptools]
+py-modules = ["ollama_monitor"]
