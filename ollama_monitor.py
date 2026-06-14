@@ -390,7 +390,7 @@ def build_layout(
     left = Layout()
     left.split_column(
         Layout(name="stats", ratio=2),
-        Layout(name="ollama_panel", ratio=2),
+        Layout(name="ollama_panel", ratio=5),
         Layout(name="procs", ratio=3),
     )
 
@@ -536,15 +536,13 @@ def build_layout(
         padding=(0, 1),
         collapse_padding=True,
     )
-    pt.add_column("USER", style="dim", width=8, no_wrap=True)
-    pt.add_column("PID", style="dim", width=6)
-    pt.add_column("CPU%", justify="right", width=5)
-    pt.add_column("CMD", no_wrap=True)
+    pt.add_column("CPU%", justify="right")
+    pt.add_column("CMD")
 
     for line in stats.processes:
         parts = line.split(None, 10)
         if len(parts) >= 11:
-            pt.add_row(parts[0], parts[1], parts[2], " ".join(parts[10:]))
+            pt.add_row(parts[2], " ".join(parts[10:]))
 
     left["procs"].update(Panel(pt, title="Top Processes", border_style="blue"))
     body["left"].update(left)
